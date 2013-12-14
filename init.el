@@ -27,6 +27,18 @@
 (require 'platform-p)
 (require 'my-functions)
 
+;;--------------------------------------------------------------------------
+;; auto-install
+;; (install-elisp-from-emacswiki "auto-install.el")
+;;--------------------------------------------------------------------------
+(require 'auto-install)
+;; (auto-install-update-emacswiki-package-name t)
+(auto-install-compatibility-setup)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+;;--------------------------------------------------------------------------
+;; basic setting
+;;--------------------------------------------------------------------------
 ; 画面や、フレームの幅に満たないウィンドウでも、テキストを折り返して表示する
 ;; (setq truncate-partial-width-windows nil)
 ;; ;(setq truncate-partial-width-windows t)
@@ -50,6 +62,24 @@
 ;; 段落を移動
 (global-set-key (kbd "M-n") 'forward-paragraph)
 (global-set-key (kbd "M-p") 'backward-paragraph)
+
+;;--------------------------------------------------------------------------
+;; Font & Color
+;;-------------------------------------------------------------------------
+;; (require 'color-setting)
+
+; 行間を開ける量、これを調整することでかなり見え方が変わる
+;; (setq-default line-spacing 1)
+
+;; テーマを設定
+;; (load-theme 'whiteboard)
+
+;;--------------------------------------------------------------------------
+;; auto-save-buffers-enhanced (ファイルの自動セーブ)
+;;--------------------------------------------------------------------------
+(require 'auto-save-buffers-enhanced)
+(setq auto-save-buffers-enhanced-interval 1) ; 指定のアイドル秒で保存
+(auto-save-buffers-enhanced t)
 
 ;;--------------------------------------------------------------------------
 ;; Emacsに必要なパスを通す 
@@ -93,17 +123,6 @@
   (autoload 'ansi-color-for-comint-mode-on "ansi-color"
     "Set `ansi-color-for-comint-mode' to t." t)
   (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on))
-
-;;--------------------------------------------------------------------------
-;; Font & Color
-;;-------------------------------------------------------------------------
-;; (require 'color-setting)
-
-; 行間を開ける量、これを調整することでかなり見え方が変わる
-;; (setq-default line-spacing 1)
-
-;; テーマを設定
-;; (load-theme 'whiteboard)
 
 ;;--------------------------------------------------------------------------
 ;; grep
@@ -203,11 +222,11 @@
 ;;--------------------------------------------------------------------------
 ;; recentf
 ;;-------------------------------------------------------------------------
-;; (require 'recentf-ext)
-;; (setq recentf-exclude '(".recentf"))
-;; (setq recentf-auto-cleanup 10)
-;; (setq recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
-;; (recentf-mode 1)
+(require 'recentf-ext)
+(setq recentf-exclude '(".recentf"))
+(setq recentf-auto-cleanup 10)
+(setq recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
+(recentf-mode 1)
 
 ;;--------------------------------------------------------------------------
 ;; helm
@@ -226,15 +245,37 @@
 ;;--------------------------------------------------------------------------
 ;; dired-details
 ;;--------------------------------------------------------------------------
-;; (require 'dired-details)
-;; (dired-details-install)
-;; (setq dired-details-hidden-string "")
+(require 'dired-details)
+(dired-details-install)
+(setq dired-details-hidden-string "")
 
 ;;--------------------------------------------------------------------------
 ;; joseph-single-dired
 ;;--------------------------------------------------------------------------
-;; (require 'joseph-single-dired)
-;; (eval-after-load 'dired '(require 'joseph-single-dired))
+(require 'joseph-single-dired)
+(eval-after-load 'dired '(require 'joseph-single-dired))
+
+;;--------------------------------------------------------------------------
+;;milkode
+;;--------------------------------------------------------------------------
+(require 'moz)
+(require 'milkode)
+(global-set-key (kbd "M-g") 'milkode:search)
+
+;;--------------------------------------------------------------------------
+;; anything-milkode
+;;--------------------------------------------------------------------------
+;; (require 'anything-milkode)
+;; (setq anything-grep-multiline nil)                                            ; Use anything-grep single line mode
+
+;; ;; Shortcut setting
+;; (global-set-key (kbd "M-g")     'anything-milkode)                                
+;; (global-set-key (kbd "C-x a f") 'anything-milkode-files)
+
+;; ;; For popwin
+;; (push '("*milkode*"                :height 20) popwin:special-display-config)
+;; (push '("*anything milkode*"       :height 20) popwin:special-display-config) 
+;; (push '("*anything milkode files*" :height 20) popwin:special-display-config)
 
 ;;--------------------------------------------------------------------------
 ;; anzu
@@ -242,3 +283,29 @@
 (global-set-key (kbd "C-q") 'anzu-query-replace-or)
 (global-set-key (kbd "M-q") 'anzu-query-replace-regexp)
 
+;;--------------------------------------------------------------------------
+;; yank-other
+;;--------------------------------------------------------------------------
+(defun yank-other-init ()
+  "Init yank-other-point"
+  (interactive)
+  (window-configuration-to-register 121) ; C-x r w y
+  (message "Set yank-other-point"))
+
+(defun yank-other ()
+  "Back to yank-other-point & yank"
+  (interactive)
+  (if mark-active
+      (kill-ring-save (region-beginning) (region-end)))
+  (jump-to-register 121) ; C-x r j y
+  (yank)
+  (yank-other-init))
+
+;; Key binding
+(global-set-key (kbd "C-M-SPC") `yank-other-init)
+(global-set-key (kbd "C-M-y")   `yank-other)
+
+;; with ace-jump-mode
+(add-hook 'ace-jump-mode-before-jump-hook
+          (lambda ()
+            (yank-other-init)))
