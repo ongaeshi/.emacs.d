@@ -46,3 +46,33 @@
 (global-set-key (kbd "M-n") 'forward-paragraph)
 (global-set-key (kbd "M-p") 'backward-paragraph)
 
+;;--------------------------------------------------------------------------
+;; Emacsに必要なパスを通す 
+;;-------------------------------------------------------------------------
+(require 'platform-p)
+
+;; http://sakito.jp/emacs/emacsshell.html#path
+;; より下に記述した物が PATH の先頭に追加されます
+(when platform-darwin-p
+  (dolist (dir (list
+                "/usr/X11/bin"
+                "/usr/local/bin"
+                "/sbin"
+                "/usr/sbin"
+                "/bin"
+                "/usr/bin"
+                "/usr/local/mysql/bin"
+                "/Developer/Tools"
+                "/usr/local/sbin"
+                "/opt/local/sbin"
+                "/usr/local/bin"
+                "/opt/local/bin" ;; これが/usr/binよりも下に書いてあればよい
+                (expand-file-name "~/bin")
+                (expand-file-name "~/bin/gnuplot")
+                ))
+    ;; PATH と exec-path に同じ物を追加します
+    (when ;; (and 
+        (file-exists-p dir) ;; (not (member dir exec-path)))
+      (setenv "PATH" (concat dir ":" (getenv "PATH")))
+      (setq exec-path (append (list dir) exec-path))))
+  )
