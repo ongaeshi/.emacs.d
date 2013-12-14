@@ -309,3 +309,57 @@
 (add-hook 'ace-jump-mode-before-jump-hook
           (lambda ()
             (yank-other-init)))
+
+;;--------------------------------------------------------------------------
+;; duplicate-thing
+;;   カーソル行を複製する、範囲選択時は範囲を複製
+;;--------------------------------------------------------------------------
+(require 'duplicate-thing)
+(global-set-key (kbd "M-c") 'duplicate-thing) ; 元のキーはcapitalize-word
+
+;;--------------------------------------------------------------------------
+;; auto-shell-command
+;;--------------------------------------------------------------------------
+;; (load-file "~/Documents/auto-shell-command/auto-shell-command.el")
+;; (require 'auto-shell-command)
+
+;; キーバインドの設定
+(global-set-key (kbd "C-c C-m") 'ascmd:toggle)      ; Temporarily on/off auto-shell-command run
+(global-set-key (kbd "C-c C-,") 'ascmd:popup)  ; Pop up '*Auto Shell Command*'
+(global-set-key (kbd "C-c C-.") 'ascmd:exec)   ; Exec-command specify file name
+
+;; 結果の通知をGrowlで行う
+(when platform-darwin-p
+  (defun ascmd:notify (msg) (deferred:process-shell (format "growlnotify -m %s -t emacs" msg))))
+
+;; エラー時のポップアップを見やすくする。 ※ (require 'popwin) が必要です。
+(push '("*Auto Shell Command*" :height 20 :noselect t) popwin:special-display-config)
+
+;; コマンドリストの設定 (下が優先高)
+(ascmd:add '("Documents/milkode/test/.*\.rb$" "ruby -I../lib -I../test ./rake_test_loader.rb $FILE"))
+(ascmd:add '("Documents/milkode/test/runner.rb" "rake test"))
+(ascmd:add '("Documents/milkode/lib/milkode/cdstk/package.rb" "(cd ~/Documents/milkode/test/ && ruby -I../lib -I../test ./test_package.rb)"))
+
+(ascmd:add '("Documents/rubykokuban-osx/.*\.cpp" "cd ~/Documents/rubykokuban-osx/apps/RubyKokubanWorkspace/RubyKokuban && xcodebuild -project RubyKokuban.xcodeproj -configuration Release build"))
+(ascmd:add '("Documents/rubykokuban-gem/test/.*\.rb" "ruby -I../lib -I../test $FILE"))
+(ascmd:add '("Documents/qiita_mail/test/.*\.rb" "ruby -I../lib -I../test $FILE"))
+(ascmd:add '("Documents/ltsvr/test/.*\.rb" "ruby -I../lib -I../test $FILE"))
+(ascmd:add '("Documents/mygithub/test/.*\.rb" "ruby -I../lib -I../test $FILE"))
+(ascmd:add '("Documents/gren/test/.*\.rb" "ruby -I../lib -I../test $FILE"))
+
+(ascmd:add '("Resources/" "wget -O /dev/null http://0.0.0.0:9090/run"))
+;;(ascmd:add '("junk/.*\.rb" "ruby $FILE"))
+
+;;--------------------------------------------------------------------------
+;; 捨てコマンド
+;;--------------------------------------------------------------------------
+(defun run-kokuban ()
+  (interactive)
+  (shell-command "open ~/Documents/rubykokuban-osx/apps/RubyKokubanWorkspace/RubyKokuban/bin/RubyKokuban.app --new --args /Users/ongaeshi/Documents/rubykokuban-osx/apps/RubyKokubanWorkspace/RubyKokuban/src/sample.rb"))
+
+;;--------------------------------------------------------------------------
+;;url-retrieve-synchronously
+;;--------------------------------------------------------------------------
+;(setq url-proxy-services
+;      '(("http"     . "proxy.co.jp:8080")
+;        ("no_proxy" . "proxy.co.jp\\|proxy2.co.jp")))
