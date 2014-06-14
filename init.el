@@ -385,6 +385,8 @@
 (ascmd:add '("Documents/ltsvr/test/.*\.rb" "ruby -I../lib -I../test $FILE"))
 (ascmd:add '("Documents/mygithub/test/.*\.rb" "ruby -I../lib -I../test $FILE"))
 (ascmd:add '("Documents/gren/test/.*\.rb" "ruby -I../lib -I../test $FILE"))
+(ascmd:add '("Documents/grn_mini/test/.*\.rb" "ruby -I../lib -I../test $FILE"))
+(ascmd:add '("Documents/honyomi/test/.*\.rb" "ruby -I../lib -I../test $FILE"))
 
 (ascmd:add '("Resources/" "wget -O /dev/null http://0.0.0.0:9090/run"))
 ;;(ascmd:add '("junk/.*\.rb" "ruby $FILE"))
