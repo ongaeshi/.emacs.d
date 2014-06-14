@@ -445,3 +445,12 @@
 ;; (setq popwin:close-popup-window-timer-interval 0.1)
 (setq popwin:close-popup-window-timer-interval 1.0)
 
+;;--------------------------------------------------------------------------
+;; po-mode
+;;--------------------------------------------------------------------------
+(autoload 'po-mode "po-mode"
+  "Major mode for translators to edit PO files" t)
+(setq auto-mode-alist (cons '("\\.po\\'\\|\\.po\\." . po-mode)
+                            auto-mode-alist))
+(put 'upcase-region 'disabled nil)
+
