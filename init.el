@@ -55,9 +55,9 @@
 ;; basic setting
 ;;--------------------------------------------------------------------------
 ; 画面や、フレームの幅に満たないウィンドウでも、テキストを折り返して表示する
-;; (setq truncate-partial-width-windows nil)
-;; ;(setq truncate-partial-width-windows t)
-;; (global-set-key (kbd "C-c l") 'toggle-truncate-lines)
+(set-default 'truncate-lines t)
+(setq truncate-partial-width-windows nil)
+(global-set-key (kbd "C-c l") 'toggle-truncate-lines)
 
 ;;; ツールバーを表示しない
 (tool-bar-mode 0)
