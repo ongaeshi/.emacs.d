@@ -1,12 +1,12 @@
-;; Language Environment
-(set-language-environment 'Japanese)
-(prefer-coding-system 'utf-8)
+;; 英語フォント(Monaco)
+(set-face-attribute 'default nil
+                    :family "Monaco"
+                    :height 140)
 
-;; Font Setting
-(create-fontset-from-ascii-font "Menlo-14:weight=normal:slant=normal" nil "menlokakugo")
-(set-fontset-font "fontset-menlokakugo" 'unicode (font-spec :family "Hiragino Kaku Gothic ProN" ) nil 'append)
-(add-to-list 'default-frame-alist '(font . "fontset-menlokakugo"))
-(setq face-font-rescale-alist '((".*Hiragino.*" . 1.2) (".*Menlo.*" . 1.0)))
+;; 日本語フォント(ヒラギノ角ゴProN)
+(set-fontset-font "fontset-default"
+                  'japanese-jisx0208
+                  '("Hiragino Maru Gothic ProN"))
 
 ;; Yen -> Backslash
 (define-key global-map [?\¥] [?\\])

@@ -84,13 +84,16 @@
 ;;--------------------------------------------------------------------------
 ;; Font & Color
 ;;-------------------------------------------------------------------------
-;; (require 'color-setting)
+(require 'color-setting)
 
 ; 行間を開ける量、これを調整することでかなり見え方が変わる
-;; (setq-default line-spacing 1)
+(setq-default line-spacing 1)
 
 ;; テーマを設定
 ;; (load-theme 'whiteboard)
+
+;; IMEの日本語対応
+(setq default-input-method "MacOSX")
 
 ;;--------------------------------------------------------------------------
 ;; auto-save-buffers-enhanced (ファイルの自動セーブ)

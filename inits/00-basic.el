@@ -15,7 +15,7 @@
 (setq set-mark-command-repeat-pop t)
 (setq-default indent-tabs-mode nil) ;; Use spaces instead of tabs
 (setq indent-line-function 'indent-relative-maybe)
-(load-theme 'misterioso)
+;; (load-theme 'misterioso)
 
 ;; http://d.hatena.ne.jp/rubikitch/20100210/emacs
 (defun other-window-or-split ()
