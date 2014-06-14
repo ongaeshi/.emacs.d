@@ -489,3 +489,8 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 
 (global-set-key (kbd "M-t") 'toggle-letter-case)
 
+;;--------------------------------------------------------------------------
+;; tab-width
+;;--------------------------------------------------------------------------
+(setq default-tab-width 4)
+
