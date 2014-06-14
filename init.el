@@ -435,3 +435,13 @@
 ;(setq url-proxy-services
 ;      '(("http"     . "proxy.co.jp:8080")
 ;        ("no_proxy" . "proxy.co.jp\\|proxy2.co.jp")))
+
+
+;;--------------------------------------------------------------------------
+;; popwin:close-popup-window-timer: error: (error Variable binding depth exceeds max-specpdl-size)
+;; https://github.com/emacs-jp/issues/issues/2
+;;--------------------------------------------------------------------------
+;; (setq popwin:close-popup-window-timer-interval 0.05)
+;; (setq popwin:close-popup-window-timer-interval 0.1)
+(setq popwin:close-popup-window-timer-interval 1.0)
+
