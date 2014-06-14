@@ -502,3 +502,13 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 ;; (push '(direx:direx-mode :position left :width 25 :dedicated t) popwin:special-display-config)
 (push '(direx:direx-mode :position left :width 30 :dedicated t) popwin:special-display-config)
 
+;;--------------------------------------------------------------------------
+;; scss-mode
+;;--------------------------------------------------------------------------
+(add-hook 'scss-mode-hook
+  '(lambda ()
+     (and
+      (set (make-local-variable 'css-indent-offset) 2)      ; インデント2
+      (set (make-local-variable 'scss-compile-at-save) nil) ; セーブ時にコンパイルしない
+      )))
+
