@@ -240,6 +240,29 @@
 (setq sdic-eiwa-dictionary-list '((sdicf-client "~/.emacs.d/site-lisp/sdic/gene.sdic")))
 (setq sdic-waei-dictionary-list '((sdicf-client "~/.emacs.d/site-lisp/sdic/jedict.sdic")))
 
+;; sdic-display-buffer 書き換え 
+(defadvice sdic-display-buffer (around sdic-display-buffer-normalize activate)
+  "sdic のバッファ表示を普通にする。"
+  (setq ad-return-value (buffer-size))
+  (let ((p (or (ad-get-arg 0)
+               (point))))
+    (and sdic-warning-hidden-entry
+         (> p (point-min))
+         (message "この前にもエントリがあります。"))
+    (goto-char p)
+    (display-buffer (get-buffer sdic-buffer-name))
+    (set-window-start (get-buffer-window sdic-buffer-name) p)))
+
+(defadvice sdic-other-window (around sdic-other-normalize activate)
+  "sdic のバッファ移動を普通にする。"
+  (other-window 1))
+
+(defadvice sdic-close-window (around sdic-close-normalize activate)
+  "sdic のバッファクローズを普通にする。"
+  (bury-buffer sdic-buffer-name))
+
+(push '("*sdic*") popwin:special-display-config)
+
 ;;--------------------------------------------------------------------------
 ;; recentf
 ;;-------------------------------------------------------------------------
