@@ -278,7 +278,9 @@
 ;;--------------------------------------------------------------------------
 (require 'moz)
 (require 'milkode)
+(setq gmilk-command "gomilk --nogroup --nocolor --smart-case")
 (global-set-key (kbd "M-g") 'milkode:search)
+(global-set-key (kbd "M-s") 'milkode:search-at-point)
 
 ;;--------------------------------------------------------------------------
 ;; anything-milkode

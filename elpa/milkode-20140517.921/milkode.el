@@ -4,7 +4,8 @@
 
 ;; Author: ongaeshi
 ;; Keywords: milkode, search, grep, jump, keyword
-;; Version: 0.3
+;; Version: 20140517.921
+;; X-Original-Version: 0.3
 ;; Package-Requires:
 
 ;; Permission is hereby granted, free of charge, to any person obtaining
@@ -83,7 +84,7 @@
 
 ;;;###autoload
 (defun milkode:search ()
-  "Milkode search using `M-x grep`"
+  "Milkode search current package using `M-x grep`"
   (interactive)
   (let ((at-point (thing-at-point 'filename)))
     (if (milkode:is-directpath at-point)
@@ -95,6 +96,25 @@
             (milkode:jump-directpath input)
           (milkode:grep input))))))
 
+;;;###autoload
+(defun milkode:search-at-point (n)
+  "Milkode search current package at point text. If the prefix was C-u, search all registered packages"
+  (interactive "P")
+  (let ((at-point (thing-at-point 'filename))
+        (is-all-search (consp n)))
+    (if (milkode:is-directpath at-point)
+        (progn
+          (setq milkode:history (cons at-point milkode:history))
+          (milkode:jump-directpath at-point))
+      (let ((input (thing-at-point 'symbol)))
+        (if (milkode:is-directpath input)
+            (milkode:jump-directpath input)
+          (if is-all-search
+              (let ((gmilk-command-option "-a"))
+                (milkode:grep input))
+            (milkode:grep input)))))))
+
+;;;###autoload
 (defun milkode:search-from-all-packages ()
   "Milkode search all registered packages using `M-x grep`"
   (interactive)
