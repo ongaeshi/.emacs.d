@@ -546,3 +546,9 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 
 (global-set-key "\C-c\C-r" 'window-resizer)
 
+;;--------------------------------------------------------------------------
+;; theme-setting
+;;--------------------------------------------------------------------------
+;; (load-theme 'misterioso)
+;; (set-cursor-color "White")
+
