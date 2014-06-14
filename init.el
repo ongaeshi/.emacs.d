@@ -306,10 +306,28 @@
 ;;--------------------------------------------------------------------------
 ;; yank-other
 ;;--------------------------------------------------------------------------
+(defface yank-other-highlight-face '((t (:background "#CCCC33" :underline t)))
+  "Face for yank-other-point." :group 'yani-other)
+
+(defvar yank-other-overlay nil)
+
+(defun yank-other-highlight-start ()
+  (let ((args (list (point) (1+ (point)) nil)))
+    (if (not yank-other-overlay)
+        (setq yank-other-overlay (apply 'make-overlay args))
+      (apply 'move-overlay yank-other-overlay args))
+    (overlay-put yank-other-overlay 'face 'yank-other-highlight-face)))
+
+(defun yank-other-highlight-end ()
+  (when yank-other-overlay
+    (delete-overlay yank-other-overlay)
+    (setq yank-other-overlay nil)))
+
 (defun yank-other-init ()
   "Init yank-other-point"
   (interactive)
   (window-configuration-to-register 121) ; C-x r w y
+  (yank-other-highlight-start)
   (message "Set yank-other-point"))
 
 (defun yank-other ()
@@ -319,16 +337,17 @@
       (kill-ring-save (region-beginning) (region-end)))
   (jump-to-register 121) ; C-x r j y
   (yank)
-  (yank-other-init))
+  (yank-other-init)
+  (yank-other-highlight-end))
 
 ;; Key binding
 (global-set-key (kbd "C-M-SPC") `yank-other-init)
 (global-set-key (kbd "C-M-y")   `yank-other)
 
 ;; with ace-jump-mode
-(add-hook 'ace-jump-mode-before-jump-hook
-          (lambda ()
-            (yank-other-init)))
+;; (add-hook 'ace-jump-mode-before-jump-hook
+;;           (lambda ()
+;;             (yank-other-init)))
 
 ;;--------------------------------------------------------------------------
 ;; duplicate-thing
