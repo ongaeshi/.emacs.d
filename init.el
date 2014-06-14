@@ -552,3 +552,13 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 ;; (load-theme 'misterioso)
 ;; (set-cursor-color "White")
 
+;;--------------------------------------------------------------------------
+;; windmove
+;;--------------------------------------------------------------------------
+(windmove-default-keybindings) ; 引数なしの場合は Shift
+;; Alt + 矢印でウィンドウを移動する
+;; (windmove-default-keybindings 'meta) ; Alt の場合は meta を指定
+;; Mac の Command + 矢印でウィンドウを移動する
+;; (windmove-default-keybindings 'super) ; Macの人はこちらをオススメ
+
+
