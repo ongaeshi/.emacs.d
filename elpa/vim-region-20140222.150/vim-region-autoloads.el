@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (vim-region-mode) "vim-region" "vim-region.el"
-;;;;;;  (21160 37756 0 0))
+;;;;;;  (21257 49434 0 0))
 ;;; Generated autoloads from vim-region.el
 
 (defvar vim-region-mode nil "\
@@ -30,7 +30,7 @@ See `local-vim-region-mode' for more information on Local-Vim-Region mode.
 
 ;;;***
 
-;;;### (autoloads nil nil ("vim-region-pkg.el") (21160 37756 579788
+;;;### (autoloads nil nil ("vim-region-pkg.el") (21257 49434 257179
 ;;;;;;  0))
 
 ;;;***

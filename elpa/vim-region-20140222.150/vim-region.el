@@ -4,8 +4,8 @@
 
 ;; Author: ongaeshi <ongaeshi0621@gmail.com>
 ;; URL: https://github.com/ongaeshi/emacs-vim-region
-;; Version: 20131204.326
-;; X-Original-Version: 0.2
+;; Version: 0.5
+;; Package-Requires: ((expand-region "20140127"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -132,6 +132,14 @@
   (set-mark (point))
   (end-of-thing 'sexp))
 
+(defun vim-region-query-replace (replacement)
+  "Replace the symbol at point with REPLACEMENT."
+  (interactive (list (read-from-minibuffer "Replacement: " nil nil nil query-replace-to-history-variable)))
+  (let ((src (buffer-substring (region-beginning) (region-end))))
+    (goto-char (region-beginning))
+    (deactivate-mark)
+    (query-replace-regexp src replacement)))
+
 (define-minor-mode local-vim-region-mode
   "vim-region-mode"
   :lighter " vim-region"
@@ -163,6 +171,7 @@
             (define-key map (kbd "S") 'backward-sexp)
 
             (define-key map (kbd "t") 'vim-region-mark-symbol)
+            (define-key map (kbd "r") 'vim-region-query-replace)
 
             (define-key map (kbd "m") 'forward-paragraph)
             (define-key map (kbd "M") 'vim-reginon-backward-paragraph)
@@ -173,7 +182,7 @@
             (define-key map (kbd "O") 'mark-whole-buffer)
 
             (define-key map (kbd "C-f") 'vim-region-scroll-up)
-            (define-key map (kbd "C-b") 'vim-region-scroll-up)
+            (define-key map (kbd "C-b") 'vim-region-scroll-down)
 
             (define-key map (kbd "/") 'isearch-forward)
             (define-key map (kbd "?") 'isearch-backward)
@@ -186,6 +195,11 @@
             (define-key map (kbd ",") 'vim-region-backward-last-char)
 
             (define-key map (kbd "u") 'undo)
+
+            (define-key map (kbd "+") 'er/expand-region)
+
+            (define-key map (kbd "L") 'sort-lines)
+            (define-key map (kbd "A") 'align-regexp)
 
             map))
 
@@ -236,7 +250,7 @@
     "mark-whole-buffer"
     ;; "vim-region-quit"
     "vim-region-scroll-up"
-    "vim-region-scroll-up"
+    "vim-region-scroll-down"
     "isearch-forward"
     "isearch-backward"
     "isearch-repeat-forward"
@@ -254,6 +268,16 @@
     "region-backward-last-char"
     "undo"
     "vim-region-mode"
+    "er/expand-region"
+    "er/contract-region"
+    "forward-list"
+    "backward-list"
+    "ruby-beginning-of-block"
+    "ruby-end-of-block"
+    "beginning-of-defun"
+    "end-of-defun"
+    "c-beginning-of-defun"
+    "c-end-of-defun"
     ))
 
 (defun vim-region-is-in (list str)
@@ -267,6 +291,7 @@
 (defun vim-region-command-check ()
  ;; (message "func: %s" this-command)
  (if (and vim-region-mode
+          (symbolp this-command)
           (not (vim-region-is-in vim-region-funcs this-command)))
      (progn
        ;; (message "[hook] vim-region-auto-quit: %s" this-command)
