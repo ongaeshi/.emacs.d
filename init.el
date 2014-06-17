@@ -568,4 +568,8 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 ;; Mac の Command + 矢印でウィンドウを移動する
 ;; (windmove-default-keybindings 'super) ; Macの人はこちらをオススメ
 
+;;--------------------------------------------------------------------------
+;; magit
+;;--------------------------------------------------------------------------
+(global-set-key (kbd "C-c m") 'magit-status)
 
