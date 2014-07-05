@@ -25,6 +25,29 @@
 (define-key ctl-x-map "\C-c" 'see-you-again)
 (define-key ctl-x-map "C" 'save-buffers-kill-emacs)
 
+;; M-0   .. toggle
+;; M-1-9 .. switch
+(defun win-switch-to-window-1 () (interactive) (win-switch-to-window 0 1))
+(defun win-switch-to-window-2 () (interactive) (win-switch-to-window 0 2))
+(defun win-switch-to-window-3 () (interactive) (win-switch-to-window 0 3))
+(defun win-switch-to-window-4 () (interactive) (win-switch-to-window 0 4))
+(defun win-switch-to-window-5 () (interactive) (win-switch-to-window 0 5))
+(defun win-switch-to-window-6 () (interactive) (win-switch-to-window 0 6))
+(defun win-switch-to-window-7 () (interactive) (win-switch-to-window 0 7))
+(defun win-switch-to-window-8 () (interactive) (win-switch-to-window 0 8))
+(defun win-switch-to-window-9 () (interactive) (win-switch-to-window 0 9))
+
+(global-set-key (kbd "M-0") 'win-toggle-window)
+(global-set-key (kbd "M-1") 'win-switch-to-window-1)
+(global-set-key (kbd "M-2") 'win-switch-to-window-2)
+(global-set-key (kbd "M-3") 'win-switch-to-window-3)
+(global-set-key (kbd "M-4") 'win-switch-to-window-4)
+(global-set-key (kbd "M-5") 'win-switch-to-window-5)
+(global-set-key (kbd "M-6") 'win-switch-to-window-6)
+(global-set-key (kbd "M-7") 'win-switch-to-window-7)
+(global-set-key (kbd "M-8") 'win-switch-to-window-8)
+(global-set-key (kbd "M-9") 'win-switch-to-window-9)
+
 ;;------------------------------------------------------------------------------
 ;; package.el
 ;;------------------------------------------------------------------------------
