@@ -596,3 +596,11 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 ;;--------------------------------------------------------------------------
 (global-set-key (kbd "C-c m") 'magit-status)
 
+(add-hook 'magit-mode-hook
+          '(lambda()
+             (define-key magit-mode-map (kbd "M-1") nil)
+             (define-key magit-mode-map (kbd "M-2") nil)
+             (define-key magit-mode-map (kbd "M-3") nil)
+             (define-key magit-mode-map (kbd "M-4") nil)
+          ))
+
