@@ -36,6 +36,7 @@
 (global-set-key (kbd "C-.")   'ff-find-other-file)
 (global-set-key (kbd "C-c r") 'revert-buffer)
 (global-set-key (kbd "C-c s") 'sort-lines)
+(global-set-key (kbd "C--")   'previous-buffer)
 
 ;;--------------------------------------------------------------------------
 ;; dired-x
