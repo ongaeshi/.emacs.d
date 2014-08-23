@@ -527,10 +527,10 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 ;;--------------------------------------------------------------------------
 ;; direx
 ;;--------------------------------------------------------------------------
-;; (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
-(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
-;; (push '(direx:direx-mode :position left :width 25 :dedicated t) popwin:special-display-config)
-(push '(direx:direx-mode :position left :width 30 :dedicated t) popwin:special-display-config)
+;; ;; (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
+;; (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
+;; ;; (push '(direx:direx-mode :position left :width 25 :dedicated t) popwin:special-display-config)
+;; (push '(direx:direx-mode :position left :width 30 :dedicated t) popwin:special-display-config)
 
 ;;--------------------------------------------------------------------------
 ;; scss-mode

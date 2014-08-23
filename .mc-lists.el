@@ -3,8 +3,10 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        c-electric-delete-forward
         comint-delchar-or-maybe-eof
         cua-delete-region
+        cua-paste
         sp--self-insert-command
         ))
 
