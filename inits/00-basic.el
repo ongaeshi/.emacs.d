@@ -40,6 +40,8 @@
 ;;--------------------------------------------------------------------------
 ;; bs-cycle
 ;;-------------------------------------------------------------------------
+(require 'bs)
+
 (global-set-key (kbd "C-<")   'bs-cycle-next)
 (global-set-key (kbd "C->")   'bs-cycle-previous)
 (global-set-key (kbd "C-x C-b") 'bs-show)
