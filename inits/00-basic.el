@@ -36,9 +36,20 @@
 (global-set-key (kbd "C-.")   'ff-find-other-file)
 (global-set-key (kbd "C-c r") 'revert-buffer)
 (global-set-key (kbd "C-c s") 'sort-lines)
+
+;;--------------------------------------------------------------------------
+;; bs-cycle
+;;-------------------------------------------------------------------------
 (global-set-key (kbd "C-<")   'bs-cycle-next)
 (global-set-key (kbd "C->")   'bs-cycle-previous)
 (global-set-key (kbd "C-x C-b") 'bs-show)
+
+(add-to-list 'bs-configurations
+             '("mycustom"
+               "^\\*shell.*\\*$\\|^\\*magit.*\\*$\\|^\\*scratch\\*$"
+               nil nil bs-visits-non-file bs-sort-buffer-interns-are-last))
+
+(setq bs-cycle-configuration-name "mycustom")
 
 ;;--------------------------------------------------------------------------
 ;; dired-x
