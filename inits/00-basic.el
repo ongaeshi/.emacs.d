@@ -92,3 +92,11 @@
 ;; (put 'narrow-to-region 'disabled nil)
 ;; (setq ring-bell-function 'ignore)
 
+;;------------------------------------------------------------------------------
+;; org-mode
+;;------------------------------------------------------------------------------
+(require 'org)
+(require 'ob-C)
+(require 'ob-ruby)
+
+(setq org-src-fontify-natively t)
