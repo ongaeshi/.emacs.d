@@ -67,7 +67,7 @@
 ;;--------------------------------------------------------------------------
 ;; ruby-mode
 ;;-------------------------------------------------------------------------
-(add-to-list 'auto-mode-alist '("\\.rb$\\|\\.ru$\\|Rakefile$\\|Gemfile\\|\\.irbrc" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rb$\\|\\.ru$\\|Rakefile$\\|Gemfile\\|\\.irbrc\\|\\.mrubin" . ruby-mode))
 
 ;; inf-ruby
 (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
