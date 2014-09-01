@@ -187,10 +187,15 @@
     ("o"   . (org-open-at-point))
     ))
 
-;; (eval-after-load "org"
-;;   '(progn
-;;      (define-key org-mode-map (kbd "C-,") nil)
-;;      ))
+(defun my-org-confirm-babel-evaluate (lang body)
+  (not (or (string= lang "ditaa")
+           (string= lang "emacs-lisp")
+           (string= lang "ruby")
+           (string= lang "C")
+           (string= lang "cpp")
+           )))
+  
+(setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
 
 ;;--------------------------------------------------------------------------
 ;; overriding-minor-mode
