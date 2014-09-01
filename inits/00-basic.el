@@ -99,4 +99,21 @@
 (require 'ob-C)
 (require 'ob-ruby)
 
+(setq org-directory "~/junk")
+(setq org-agenda-files (list org-directory))
+
 (setq org-src-fontify-natively t)
+
+(smartrep-define-key
+    org-mode-map "C-c"
+  '(("n" . (lambda () (outline-next-visible-heading 1)))
+    ("p" . (lambda () (outline-previous-visible-heading 1)))
+    ("i"   . (org-clock-in))
+    ("O"   . (org-clock-out))
+    ("o"   . (org-open-at-point))
+    ))
+
+;; (eval-after-load "org"
+;;   '(progn
+;;      (define-key org-mode-map (kbd "C-,") nil)
+;;      ))
