@@ -165,3 +165,16 @@
      (define-key helm-command-map (kbd "y") 'yas/insert-snippet)))
 
 (push '("*helm-mode-execute-extended-command*" :height 20) popwin:special-display-config)
+
+;;--------------------------------------------------------------------------
+;; overriding-minor-mode
+;;--------------------------------------------------------------------------
+;; (makunbound 'overriding-minor-mode-map) ; For reset minor-mode
+(define-minor-mode overriding-minor-mode
+  "Define force override keybindings"
+  t                                     ; Default enable
+  ""                                    ; Not display mode-line
+  `(
+    (,(kbd "C-,") . helm-mini)
+    (,(kbd "M-h") . help-for-help)
+    ))
