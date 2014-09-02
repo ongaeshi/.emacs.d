@@ -194,7 +194,7 @@
            (string= lang "C")
            (string= lang "cpp")
            )))
-  
+
 (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
 
 ;;--------------------------------------------------------------------------
