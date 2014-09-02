@@ -209,3 +209,19 @@
     (,(kbd "C-,") . helm-mini)
     (,(kbd "M-h") . help-for-help)
     ))
+
+;;--------------------------------------------------------------------------
+;; ring-transparency
+;;--------------------------------------------------------------------------
+(defun ring-transparency (arg)
+  (interactive "P")
+  ; (let* ((ring '(100 50 25 0))
+  (let* ((ring '(100 90 80))
+         (current (frame-parameter nil 'alpha))
+         (last (car (last ring)))
+         (next (if arg
+                   (if (equal current (car ring)) last (car ring))
+                 (or (cadr (member current ring)) (car ring)))))
+    (set-frame-parameter nil 'alpha next)))
+
+(global-set-key (kbd "C--") 'ring-transparency)
