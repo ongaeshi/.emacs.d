@@ -334,7 +334,8 @@
 ;;--------------------------------------------------------------------------
 (require 'moz)
 (require 'milkode)
-(setq gmilk-command "gomilk --nogroup --nocolor --smart-case")
+;; (setq gmilk-command "gomilk --nogroup --nocolor --smart-case")
+(setq gmilk-command "gmilk -e grep")
 (global-set-key (kbd "M-g") 'milkode:search)
 (global-set-key (kbd "M-s") 'milkode:search-at-point)
 
