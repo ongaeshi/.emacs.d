@@ -44,6 +44,7 @@
 (global-set-key (kbd "C-c r") 'revert-buffer)
 (global-set-key (kbd "C-c s") 'sort-lines)
 (global-set-key (kbd "C-a")    'my-goto-line-beginning-or-indent)
+(global-set-key (kbd "M-/")    'hippie-expand)
 
 ;;--------------------------------------------------------------------------
 ;; bs-cycle
