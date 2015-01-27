@@ -614,3 +614,23 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 (add-to-list 'magic-mode-alist '("\\(.\\|\n\\)*\n@implementation" . objc-mode))
 (add-to-list 'magic-mode-alist '("\\(.\\|\n\\)*\n@interface" . objc-mode))
 (add-to-list 'magic-mode-alist '("\\(.\\|\n\\)*\n@protocol" . objc-mode))
+
+;;--------------------------------------------------------------------------
+;; omni-shell-command
+;;--------------------------------------------------------------------------
+(defun omni-shell-command (command replace-p)
+  (interactive "sOmni Shell command: \nP")
+  (if (region-active-p)
+      (shell-command-on-region (region-beginning) (region-end) command nil replace-p)
+    (shell-command command replace-p)))
+
+(global-set-key (kbd "M-!") 'omni-shell-command)
+
+(defun omni-ruby-command (command replace-p)
+  (interactive "sOmni Ruby command: \nP")
+    (if (region-active-p)
+        (shell-command-on-region (region-beginning) (region-end) (format "ruby -ne '%s'" command) nil replace-p)
+      (shell-command (format "ruby -e '%s'" command) replace-p)))
+
+(global-set-key (kbd "M-|") 'omni-ruby-command)
+
