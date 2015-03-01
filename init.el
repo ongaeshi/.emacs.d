@@ -108,6 +108,10 @@
 (global-set-key (kbd "M-n") 'forward-paragraph)
 (global-set-key (kbd "M-p") 'backward-paragraph)
 
+;; エラーの移動
+(global-set-key (kbd "M-N") 'next-error)
+(global-set-key (kbd "M-P") 'previous-error)
+
 ;; カーソルの点滅を止める
 ;; (blink-cursor-mode 0)
 
@@ -335,7 +339,8 @@
 (require 'moz)
 (require 'milkode)
 ;; (setq gmilk-command "gomilk --nogroup --nocolor --smart-case")
-(setq gmilk-command "gmilk -e grep")
+;; (setq gmilk-command "gmilk -e grep")
+(setq gmilk-command "gmilk")
 (global-set-key (kbd "M-g") 'milkode:search)
 (global-set-key (kbd "M-s") 'milkode:search-at-point)
 
