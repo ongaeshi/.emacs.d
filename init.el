@@ -615,6 +615,11 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 (add-to-list 'magic-mode-alist '("\\(.\\|\n\\)*\n@interface" . objc-mode))
 (add-to-list 'magic-mode-alist '("\\(.\\|\n\\)*\n@protocol" . objc-mode))
 
+(add-to-list 'cc-other-file-alist '("\\.m\\'"  (".h")))
+(add-to-list 'cc-other-file-alist '("\\.mm\\'"  (".h" ".hpp")))
+(add-to-list 'cc-other-file-alist '("\\.h\\'"   (".c" ".cc" ".C" ".CC" ".cxx" ".cpp" ".m" ".mm")))
+(add-to-list 'cc-other-file-alist '("\\.hpp\\'" (".cpp" ".mm")))
+
 ;;--------------------------------------------------------------------------
 ;; omni-shell-command
 ;;--------------------------------------------------------------------------
