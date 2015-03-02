@@ -620,7 +620,7 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 (add-to-list 'magic-mode-alist '("\\(.\\|\n\\)*\n@interface" . objc-mode))
 (add-to-list 'magic-mode-alist '("\\(.\\|\n\\)*\n@protocol" . objc-mode))
 
-(add-hook 'objc-mode-hook
+(add-hook 'c-mode-common-hook
           '(lambda ()
              (add-to-list 'cc-other-file-alist '("\\.m\\'"  (".h")))
              (add-to-list 'cc-other-file-alist '("\\.mm\\'"  (".h" ".hpp")))
