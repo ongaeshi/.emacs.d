@@ -622,6 +622,7 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 
 (add-hook 'c-mode-common-hook
           '(lambda ()
+             (require 'find-file)
              (add-to-list 'cc-other-file-alist '("\\.m\\'"  (".h")))
              (add-to-list 'cc-other-file-alist '("\\.mm\\'"  (".h" ".hpp")))
              (add-to-list 'cc-other-file-alist '("\\.h\\'"   (".c" ".cc" ".C" ".CC" ".cxx" ".cpp" ".m" ".mm")))
@@ -647,3 +648,12 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 
 (global-set-key (kbd "M-|") 'omni-ruby-command)
 
+;;--------------------------------------------------------------------------
+;; web-mode
+;;--------------------------------------------------------------------------
+(add-hook 'web-mode-hook
+          '(lambda ()
+             (setq web-mode-markup-indent-offset 2)
+             (setq web-mode-css-indent-offset 2)
+             (setq web-mode-code-indent-offset 2)
+             ))
