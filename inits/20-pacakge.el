@@ -225,7 +225,7 @@
                  (or (cadr (member current ring)) (car ring)))))
     (set-frame-parameter nil 'alpha next)))
 
-(global-set-key (kbd "C--") 'ring-transparency)
+; (global-set-key (kbd "C--") 'ring-transparency)
 
 ;;--------------------------------------------------------------------------
 ;; ace-isearch

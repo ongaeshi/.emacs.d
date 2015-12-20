@@ -14,39 +14,39 @@
 ;; (define-key global-map win:switch-prefix nil)
 ;; (define-key global-map "\C-z1" 'win-switch-to-window)
 
-(require 'windows)
+;; (require 'windows)
 
-;; 新規にフレームを作らない
-(setq win:use-frame nil)
-(win:startup-with-window)
+;; ;; 新規にフレームを作らない
+;; (setq win:use-frame nil)
+;; (win:startup-with-window)
 
-;; C-x C-c で終了するとそのときのウィンドウの状態を保存する
-;; C-x C なら保存しない
-(define-key ctl-x-map "\C-c" 'see-you-again)
-(define-key ctl-x-map "C" 'save-buffers-kill-emacs)
+;; ;; C-x C-c で終了するとそのときのウィンドウの状態を保存する
+;; ;; C-x C なら保存しない
+;; (define-key ctl-x-map "\C-c" 'see-you-again)
+;; (define-key ctl-x-map "C" 'save-buffers-kill-emacs)
 
 ;; M-0   .. toggle
 ;; M-1-9 .. switch
-(defun win-switch-to-window-1 () (interactive) (win-switch-to-window 0 1))
-(defun win-switch-to-window-2 () (interactive) (win-switch-to-window 0 2))
-(defun win-switch-to-window-3 () (interactive) (win-switch-to-window 0 3))
-(defun win-switch-to-window-4 () (interactive) (win-switch-to-window 0 4))
-(defun win-switch-to-window-5 () (interactive) (win-switch-to-window 0 5))
-(defun win-switch-to-window-6 () (interactive) (win-switch-to-window 0 6))
-(defun win-switch-to-window-7 () (interactive) (win-switch-to-window 0 7))
-(defun win-switch-to-window-8 () (interactive) (win-switch-to-window 0 8))
-(defun win-switch-to-window-9 () (interactive) (win-switch-to-window 0 9))
+;; (defun win-switch-to-window-1 () (interactive) (win-switch-to-window 0 1))
+;; (defun win-switch-to-window-2 () (interactive) (win-switch-to-window 0 2))
+;; (defun win-switch-to-window-3 () (interactive) (win-switch-to-window 0 3))
+;; (defun win-switch-to-window-4 () (interactive) (win-switch-to-window 0 4))
+;; (defun win-switch-to-window-5 () (interactive) (win-switch-to-window 0 5))
+;; (defun win-switch-to-window-6 () (interactive) (win-switch-to-window 0 6))
+;; (defun win-switch-to-window-7 () (interactive) (win-switch-to-window 0 7))
+;; (defun win-switch-to-window-8 () (interactive) (win-switch-to-window 0 8))
+;; (defun win-switch-to-window-9 () (interactive) (win-switch-to-window 0 9))
 
-(global-set-key (kbd "M-0") 'win-toggle-window)
-(global-set-key (kbd "M-1") 'win-switch-to-window-1)
-(global-set-key (kbd "M-2") 'win-switch-to-window-2)
-(global-set-key (kbd "M-3") 'win-switch-to-window-3)
-(global-set-key (kbd "M-4") 'win-switch-to-window-4)
-(global-set-key (kbd "M-5") 'win-switch-to-window-5)
-(global-set-key (kbd "M-6") 'win-switch-to-window-6)
-(global-set-key (kbd "M-7") 'win-switch-to-window-7)
-(global-set-key (kbd "M-8") 'win-switch-to-window-8)
-(global-set-key (kbd "M-9") 'win-switch-to-window-9)
+;; (global-set-key (kbd "M-0") 'win-toggle-window)
+;; (global-set-key (kbd "M-1") 'win-switch-to-window-1)
+;; (global-set-key (kbd "M-2") 'win-switch-to-window-2)
+;; (global-set-key (kbd "M-3") 'win-switch-to-window-3)
+;; (global-set-key (kbd "M-4") 'win-switch-to-window-4)
+;; (global-set-key (kbd "M-5") 'win-switch-to-window-5)
+;; (global-set-key (kbd "M-6") 'win-switch-to-window-6)
+;; (global-set-key (kbd "M-7") 'win-switch-to-window-7)
+;; (global-set-key (kbd "M-8") 'win-switch-to-window-8)
+;; (global-set-key (kbd "M-9") 'win-switch-to-window-9)
 
 ;;------------------------------------------------------------------------------
 ;; package.el
@@ -368,43 +368,43 @@
 ;;--------------------------------------------------------------------------
 ;; yank-other
 ;;--------------------------------------------------------------------------
-(defface yank-other-highlight-face '((t (:background "#CCCC33" :underline t)))
-  "Face for yank-other-point." :group 'yani-other)
+;; (defface yank-other-highlight-face '((t (:background "#CCCC33" :underline t)))
+;;   "Face for yank-other-point." :group 'yani-other)
 
-(defvar yank-other-overlay nil)
+;; (defvar yank-other-overlay nil)
 
-(defun yank-other-highlight-start ()
-  (let ((args (list (point) (1+ (point)) nil)))
-    (if (not yank-other-overlay)
-        (setq yank-other-overlay (apply 'make-overlay args))
-      (apply 'move-overlay yank-other-overlay args))
-    (overlay-put yank-other-overlay 'face 'yank-other-highlight-face)))
+;; (defun yank-other-highlight-start ()
+;;   (let ((args (list (point) (1+ (point)) nil)))
+;;     (if (not yank-other-overlay)
+;;         (setq yank-other-overlay (apply 'make-overlay args))
+;;       (apply 'move-overlay yank-other-overlay args))
+;;     (overlay-put yank-other-overlay 'face 'yank-other-highlight-face)))
 
-(defun yank-other-highlight-end ()
-  (when yank-other-overlay
-    (delete-overlay yank-other-overlay)
-    (setq yank-other-overlay nil)))
+;; (defun yank-other-highlight-end ()
+;;   (when yank-other-overlay
+;;     (delete-overlay yank-other-overlay)
+;;     (setq yank-other-overlay nil)))
 
-(defun yank-other-init ()
-  "Init yank-other-point"
-  (interactive)
-  (window-configuration-to-register 121) ; C-x r w y
-  (yank-other-highlight-start)
-  (message "Set yank-other-point"))
+;; (defun yank-other-init ()
+;;   "Init yank-other-point"
+;;   (interactive)
+;;   (window-configuration-to-register 121) ; C-x r w y
+;;   (yank-other-highlight-start)
+;;   (message "Set yank-other-point"))
 
-(defun yank-other ()
-  "Back to yank-other-point & yank"
-  (interactive)
-  (if mark-active
-      (kill-ring-save (region-beginning) (region-end)))
-  (jump-to-register 121) ; C-x r j y
-  (yank)
-  (yank-other-init)
-  (yank-other-highlight-end))
+;; (defun yank-other ()
+;;   "Back to yank-other-point & yank"
+;;   (interactive)
+;;   (if mark-active
+;;       (kill-ring-save (region-beginning) (region-end)))
+;;   (jump-to-register 121) ; C-x r j y
+;;   (yank)
+;;   (yank-other-init)
+;;   (yank-other-highlight-end))
 
-;; Key binding
-(global-set-key (kbd "C-M-SPC") `yank-other-init)
-(global-set-key (kbd "C-M-y")   `yank-other)
+;; ;; Key binding
+;; (global-set-key (kbd "C-M-SPC") `yank-other-init)
+;; (global-set-key (kbd "C-M-y")   `yank-other)
 
 ;; with ace-jump-mode
 ;; (add-hook 'ace-jump-mode-before-jump-hook
@@ -456,7 +456,7 @@
 (ascmd:add '("Documents/honyomi/test/.*\.rb" "ruby -I../lib -I../test $FILE"))
 (ascmd:add '("Documents/mrubin/test/.*\.rb" "ruby -I../lib -I../test $FILE"))
 
-(ascmd:add '("Resources/" "wget -O /dev/null http://0.0.0.0:9090/run"))
+;; (ascmd:add '("Resources/" "wget -O /dev/null http://0.0.0.0:9090/run"))
 ;;(ascmd:add '("junk/.*\.rb" "ruby $FILE"))
 
 ;;--------------------------------------------------------------------------
@@ -524,7 +524,7 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
       (downcase-region p1 p2) (put this-command 'state "all lower")) )
     ))
 
-(global-set-key (kbd "M-t") 'toggle-letter-case)
+; (global-set-key (kbd "M-t") 'toggle-letter-case)
 
 ;;--------------------------------------------------------------------------
 ;; tab-width
@@ -632,13 +632,13 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 ;;--------------------------------------------------------------------------
 ;; omni-shell-command
 ;;--------------------------------------------------------------------------
-(defun omni-shell-command (command replace-p)
-  (interactive "sOmni Shell command: \nP")
-  (if (region-active-p)
-      (shell-command-on-region (region-beginning) (region-end) command nil replace-p)
-    (shell-command command replace-p)))
+;; (defun omni-shell-command (command replace-p)
+;;   (interactive "sOmni Shell command: \nP")
+;;   (if (region-active-p)
+;;       (shell-command-on-region (region-beginning) (region-end) command nil replace-p)
+;;     (shell-command command replace-p)))
 
-(global-set-key (kbd "M-!") 'omni-shell-command)
+;; (global-set-key (kbd "M-!") 'omni-shell-command)
 
 (defun omni-ruby-command (command replace-p)
   (interactive "sOmni Ruby command: \nP")
@@ -657,3 +657,8 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
              (setq web-mode-css-indent-offset 2)
              (setq web-mode-code-indent-offset 2)
              ))
+
+;;--------------------------------------------------------------------------
+;; whole-line-or-region
+;;--------------------------------------------------------------------------
+(whole-line-or-region-mode)
