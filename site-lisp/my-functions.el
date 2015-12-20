@@ -24,11 +24,11 @@
 (global-set-key "\M-n" 'scroll-next-10-line)
 
 ;;ラインをディスプレイの最上段に移動する
-(defun line-to-top ()
-  "Move current line to top of window."
-  (interactive)
-  (recenter 0))
-(global-set-key (kbd "M-l") 'line-to-top) ; 元のキーは downcase-word
+;; (defun line-to-top ()
+;;   "Move current line to top of window."
+;;   (interactive)
+;;   (recenter 0))
+;; (global-set-key (kbd "M-l") 'line-to-top) ; 元のキーは downcase-word
 
 ;;こんなキーバインドも使えるよ 例 f1キー ,→キー
 ;(global-set-key [f1] 'line-to-top)

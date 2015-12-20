@@ -70,10 +70,10 @@
 ;;--------------------------------------------------------------------------
 (require 'highlight-symbol)
 
-(global-unset-key (kbd "M-s"))
+(global-unset-key (kbd "M-l"))
 
-(smartrep-define-key global-map "M-s"
-  '(("M-s"        . 'highlight-symbol-next)
+(smartrep-define-key global-map "M-l"
+  '(("M-l"        . 'highlight-symbol-next)
     ("h"          . 'highlight-symbol-at-point)
     ("n"          . 'highlight-symbol-next)
     ("p"          . 'highlight-symbol-prev)
@@ -126,13 +126,14 @@
 ;; ace-jump-mode
 ;;--------------------------------------------------------------------------
 (require 'ace-jump-mode)
-(global-set-key (kbd "M-j") 'ace-jump-mode)
-(global-set-key (kbd "M-J") 'ace-jump-mode-pop-mark)
+(global-set-key (kbd "M-s") 'ace-jump-mode)
+;; (global-set-key (kbd "M-j") 'ace-jump-mode)
+;; (global-set-key (kbd "M-J") 'ace-jump-mode-pop-mark)
 
-(add-hook 'c-mode-common-hook
-	  '(lambda ()
-	     (local-set-key (kbd "M-j") 'ace-jump-mode)
-	     ))
+;; (add-hook 'c-mode-common-hook
+;; 	  '(lambda ()
+;; 	     (local-set-key (kbd "M-j") 'ace-jump-mode)
+;; 	     ))
 
 ;;--------------------------------------------------------------------------
 ;; yasnippet
@@ -234,4 +235,4 @@
 (setq ace-isearch-use-function-from-isearch nil)
 (define-key isearch-mode-map (kbd "M-o") 'helm-swoop-from-isearch)
 
-(global-set-key (kbd "M-s") 'helm-swoop)
+;; (global-set-key (kbd "M-s") 'helm-swoop)
