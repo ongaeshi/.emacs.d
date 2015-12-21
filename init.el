@@ -179,17 +179,17 @@
     "Set `ansi-color-for-comint-mode' to t." t)
   (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on))
 
-;;--------------------------------------------------------------------------
-;; grep
-;;-------------------------------------------------------------------------
-;; M-g gmilk
-(global-set-key "\M-g" 'grep)
-(setq grep-command "gmilk ")
-(setq grep-use-null-device nil)
+;; ;;--------------------------------------------------------------------------
+;; ;; grep
+;; ;;-------------------------------------------------------------------------
+;; ;; M-g gmilk
+;; (global-set-key "\M-g" 'grep)
+;; (setq grep-command "gmilk ")
+;; (setq grep-use-null-device nil)
 
-;; C-x C-g gren
-(global-set-key (kbd "C-x C-g") 'grep-find)
-(setq grep-find-command "gren ")
+;; ;; C-x C-g gren
+;; (global-set-key (kbd "C-x C-g") 'grep-find)
+;; (setq grep-find-command "gren ")
 
 ;;--------------------------------------------------------------------------
 ;; C, C++
@@ -341,7 +341,7 @@
 ;; (setq gmilk-command "gomilk --nogroup --nocolor --smart-case")
 ;; (setq gmilk-command "gmilk -e grep")
 (setq gmilk-command "gmilk")
-(global-set-key (kbd "M-g") 'milkode:search)
+; (global-set-key (kbd "M-g") 'milkode:search)
 ; (global-set-key (kbd "M-s") 'milkode:search-at-point)
 
 ;;--------------------------------------------------------------------------
