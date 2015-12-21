@@ -342,6 +342,7 @@
 ;; (setq gmilk-command "gmilk -e grep")
 (setq gmilk-command "gmilk")
 ; (global-set-key (kbd "M-g") 'milkode:search)
+(global-set-key (kbd "M-g m") 'milkode:search)
 ; (global-set-key (kbd "M-s") 'milkode:search-at-point)
 
 ;;--------------------------------------------------------------------------

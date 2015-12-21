@@ -37,14 +37,15 @@
 ; (global-set-key (kbd "C-h")   'delete-backward-char)
 ; (global-set-key (kbd "M-h")   'help-for-help)
 ; (global-set-key (kbd "M-g")   'grep)
-(global-set-key (kbd "M-o")   'next-error)
-(global-set-key (kbd "C-c g") 'goto-line)
+; (global-set-key (kbd "M-o")   'next-error)
+; (global-set-key (kbd "C-c g") 'goto-line)
 (global-set-key (kbd "C-;")   'other-window-or-split)
 (global-set-key (kbd "C-.")   'ff-find-other-file)
 (global-set-key (kbd "C-c r") 'revert-buffer)
 (global-set-key (kbd "C-c s") 'sort-lines)
 (global-set-key (kbd "C-a")    'my-goto-line-beginning-or-indent)
 (global-set-key (kbd "M-/")    'hippie-expand)
+(global-set-key (kbd "M-i")    'imenu)
 
 ;;--------------------------------------------------------------------------
 ;; bs-cycle
