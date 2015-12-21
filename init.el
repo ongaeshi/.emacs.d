@@ -137,7 +137,7 @@
 (auto-save-buffers-enhanced t)
 
 ;;--------------------------------------------------------------------------
-;; Emacsに必要なパスを通す 
+;; Emacsに必要なパスを通す
 ;;-------------------------------------------------------------------------
 ;; http://sakito.jp/emacs/emacsshell.html#path
 ;; より下に記述した物が PATH の先頭に追加されます
@@ -159,7 +159,7 @@
                 (expand-file-name "~/bin/gnuplot")
                 ))
     ;; PATH と exec-path に同じ物を追加します
-    (when ;; (and 
+    (when ;; (and
         (file-exists-p dir) ;; (not (member dir exec-path)))
       (setenv "PATH" (concat dir ":" (getenv "PATH")))
       (setq exec-path (append (list dir) exec-path))))
@@ -221,21 +221,21 @@
 
 ;;; C++モードではマジックナンバーとヒントを表示
 (add-hook 'c++-mode-hook
-	  '(lambda ()
+      '(lambda ()
              ;; (display-hint)
              (font-lock-add-magic-number)
-	     ))
+         ))
 
 ;; c++-modeキーバインディング
 (add-hook 'c++-mode-hook
-	  (function (lambda () (setq comment-column 40))))
+      (function (lambda () (setq comment-column 40))))
 
 (add-hook 'c++-mode-hook
-	  '(lambda ()
-	     (local-set-key "\C-cc" 'c-insert-function-comment)
-	     (local-set-key "\C-cn" 'c-insert-name-comment)
-	     (local-set-key "\C-ci" 'c-insert-if0-region)
-	     ))
+      '(lambda ()
+         (local-set-key "\C-cc" 'c-insert-function-comment)
+         (local-set-key "\C-cn" 'c-insert-name-comment)
+         (local-set-key "\C-ci" 'c-insert-if0-region)
+         ))
 
 ;; (add-hook 'c-mode-common-hook
 ;;           (lambda ()
@@ -274,7 +274,7 @@
 (setq sdic-eiwa-dictionary-list '((sdicf-client "~/.emacs.d/site-lisp/sdic/gene.sdic")))
 (setq sdic-waei-dictionary-list '((sdicf-client "~/.emacs.d/site-lisp/sdic/jedict.sdic")))
 
-;; sdic-display-buffer 書き換え 
+;; sdic-display-buffer 書き換え
 (defadvice sdic-display-buffer (around sdic-display-buffer-normalize activate)
   "sdic のバッファ表示を普通にする。"
   (setq ad-return-value (buffer-size))
@@ -351,12 +351,12 @@
 ;; (setq anything-grep-multiline nil)                                            ; Use anything-grep single line mode
 
 ;; ;; Shortcut setting
-;; (global-set-key (kbd "M-g")     'anything-milkode)                                
+;; (global-set-key (kbd "M-g")     'anything-milkode)
 ;; (global-set-key (kbd "C-x a f") 'anything-milkode-files)
 
 ;; ;; For popwin
 ;; (push '("*milkode*"                :height 20) popwin:special-display-config)
-;; (push '("*anything milkode*"       :height 20) popwin:special-display-config) 
+;; (push '("*anything milkode*"       :height 20) popwin:special-display-config)
 ;; (push '("*anything milkode files*" :height 20) popwin:special-display-config)
 
 ;;--------------------------------------------------------------------------
@@ -668,7 +668,7 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 ;;--------------------------------------------------------------------------
 (autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR.
-  
+
   \(fn arg char)"
   'interactive)
 
