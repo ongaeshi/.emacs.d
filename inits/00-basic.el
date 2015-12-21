@@ -34,8 +34,8 @@
 ;;------------------------------------------------------------------------------
 ;; Key Bindings
 ;;------------------------------------------------------------------------------
-(global-set-key (kbd "C-h")   'delete-backward-char)
-(global-set-key (kbd "M-h")   'help-for-help)
+; (global-set-key (kbd "C-h")   'delete-backward-char)
+; (global-set-key (kbd "M-h")   'help-for-help)
 (global-set-key (kbd "M-g")   'grep)
 (global-set-key (kbd "M-o")   'next-error)
 (global-set-key (kbd "C-c g") 'goto-line)
