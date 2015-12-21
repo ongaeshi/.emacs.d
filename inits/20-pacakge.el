@@ -208,7 +208,7 @@
   ""                                    ; Not display mode-line
   `(
     (,(kbd "C-,") . helm-mini)
-    (,(kbd "M-h") . help-for-help)
+    ; (,(kbd "M-h") . help-for-help)
     ))
 
 ;;--------------------------------------------------------------------------
