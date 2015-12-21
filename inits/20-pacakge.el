@@ -123,19 +123,6 @@
     ("C-O"        . 'mc/reverse-regions)))
 
 ;;--------------------------------------------------------------------------
-;; ace-jump-mode
-;;--------------------------------------------------------------------------
-(require 'ace-jump-mode)
-;; (global-set-key (kbd "M-s") 'ace-jump-mode)
-;; (global-set-key (kbd "M-j") 'ace-jump-mode)
-;; (global-set-key (kbd "M-J") 'ace-jump-mode-pop-mark)
-
-;; (add-hook 'c-mode-common-hook
-;; 	  '(lambda ()
-;; 	     (local-set-key (kbd "M-j") 'ace-jump-mode)
-;; 	     ))
-
-;;--------------------------------------------------------------------------
 ;; yasnippet
 ;;--------------------------------------------------------------------------
 (require 'yasnippet)
@@ -226,13 +213,3 @@
     (set-frame-parameter nil 'alpha next)))
 
 ; (global-set-key (kbd "C--") 'ring-transparency)
-
-;;--------------------------------------------------------------------------
-;; ace-isearch
-;;--------------------------------------------------------------------------
-(require 'ace-isearch)
-(global-ace-isearch-mode +1)
-(setq ace-isearch-use-function-from-isearch nil)
-(define-key isearch-mode-map (kbd "M-o") 'helm-swoop-from-isearch)
-
-;; (global-set-key (kbd "M-s") 'helm-swoop)
