@@ -55,12 +55,12 @@
 (global-set-key (kbd "C->")   'bs-cycle-previous)
 (global-set-key (kbd "C-x C-b") 'bs-show)
 
-(add-to-list 'bs-configurations
-             '("mycustom"
-               "^\\*shell.*\\*$\\|^\\*magit.*\\*$\\|^\\*scratch\\*$"
-               nil nil bs-visits-non-file bs-sort-buffer-interns-are-last))
+;; (add-to-list 'bs-configurations
+;;              '("mycustom"
+;;                "^\\*shell.*\\*$\\|^\\*magit.*\\*$\\|^\\*scratch\\*$"
+;;                nil nil bs-visits-non-file bs-sort-buffer-interns-are-last))
 
-(setq bs-cycle-configuration-name "mycustom")
+;; (setq bs-cycle-configuration-name "mycustom") ;
 
 ;;--------------------------------------------------------------------------
 ;; dired-x
