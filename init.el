@@ -105,8 +105,8 @@
 (setq ring-bell-function 'ignore)
 
 ;; 段落を移動
-(global-set-key (kbd "M-n") 'forward-paragraph)
-(global-set-key (kbd "M-p") 'backward-paragraph)
+;; (global-set-key (kbd "M-n") 'forward-paragraph)
+;; (global-set-key (kbd "M-p") 'backward-paragraph)
 
 ;; エラーの移動
 (global-set-key (kbd "M-N") 'next-error)

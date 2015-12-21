@@ -12,7 +12,7 @@
   (interactive)
   (previous-line 10))
 ;(global-set-key "\C-\M-p" 'scroll-previous-10-line)
-(global-set-key "\M-p" 'scroll-previous-10-line)
+;(global-set-key "\M-p" 'scroll-previous-10-line)
 
 
 ;;10行後ろに移動
@@ -21,7 +21,7 @@
   (interactive)
   (next-line 10))
 ;(global-set-key "\C-\M-n" 'scroll-next-10-line)
-(global-set-key "\M-n" 'scroll-next-10-line)
+;(global-set-key "\M-n" 'scroll-next-10-line)
 
 ;;ラインをディスプレイの最上段に移動する
 ;; (defun line-to-top ()
