@@ -155,7 +155,7 @@
                 "/opt/local/sbin"
                 "/usr/local/bin"
                 "/opt/local/bin" ;; これが/usr/binよりも下に書いてあればよい
-                (expand-file-name "~/bin")
+                (expand-file-name "~/bin") ;
                 (expand-file-name "~/bin/gnuplot")
                 ))
     ;; PATH と exec-path に同じ物を追加します
@@ -185,11 +185,12 @@
 ;; ;; M-g gmilk
 ;; (global-set-key "\M-g" 'grep)
 ;; (setq grep-command "gmilk ")
-;; (setq grep-use-null-device nil)
+(setq grep-use-null-device nil)
 
-;; ;; C-x C-g gren
-;; (global-set-key (kbd "C-x C-g") 'grep-find)
+;; C-x C-g gren
+(global-set-key (kbd "C-x C-g") 'grep-find)
 ;; (setq grep-find-command "gren ")
+(setq grep-find-command "pt --nocolor --nogroup ")
 
 ;;--------------------------------------------------------------------------
 ;; C, C++
@@ -684,3 +685,14 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 (global-set-key (kbd "M-g w") 'avy-goto-word-1)
 (global-set-key (kbd "M-g e") 'avy-goto-word-0)
 (avy-setup-default)
+
+;;--------------------------------------------------------------------------
+;; evil
+;;--------------------------------------------------------------------------
+(evil-mode)
+(global-linum-mode)
+(global-evil-surround-mode 1)
+
+(define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
+(define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt)
+(define-key evil-normal-state-map (kbd "C-c .") 'ff-find-other-file)

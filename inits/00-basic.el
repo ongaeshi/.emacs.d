@@ -83,6 +83,9 @@
 (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
 (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
 
+;; マジックコメントの自動挿入を停止する
+(custom-set-variables '(ruby-insert-encoding-magic-comment nil))
+
 ;;--------------------------------------------------------------------------
 ;; cua-mode
 ;;-------------------------------------------------------------------------
